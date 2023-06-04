@@ -1,8 +1,8 @@
 # genre-predictor
-Based on text classification, we aim to build a machine learning model which predicts the genre of a song given its lyrics.
+Based on text classification, we aim to build a machine learning model that predicts the genre of a song based on qualities of the song (e.g., energy, instrumentals, acoustic vs. electronic, loudness) and its lyrics.
 
-## Dataframe Training Set
-To gather data on songs in the chosen genres (rock, pop, rap, hip hop, heavy metal, country, techno, and electronica), a Spotify playlist was constructed with 10 songs in each category. An API request pulled information about each of the songs on the playlist and added the information to a dataframe. Information gathered included:
+## Building the Dataframe Training Set
+To gather data on songs in 8 chosen genres (rock, pop, rap, hip hop, heavy metal, country, techno, and electronica), a Spotify playlist was constructed with 15 songs in each category (120 songs total). An API request pulled information about each of the songs on the playlist and added the information to a dataframe. Information gathered included:
 
 * track_ids (in order to query more information about individual songs)
 * track_names (song titles)
@@ -17,6 +17,15 @@ To gather data on songs in the chosen genres (rock, pop, rap, hip hop, heavy met
 * tempo - How fast a song is, from 0.0 to 1.0.
 * valence - A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
 
+In addition to the above information, an API request also pulled song lyrics from the Genius song lyrics website for each song. These lyrics were merged with the dataframe. 
+
+Extraneous, non-lyric words were removed using regEX and individual words were counted. The count of original words in each song was appended to the dataframe. 
+
+All of the above information and the process to gather and clean it is contained in the `API-requests.ipynb` file.
+
+All of the dataframe information was exported to a JSON (`distinct_lyric_df.json`). This was then uploaded to MongoDB (`distinct_lyric_df_sql`) to help improve the data formatting.
+
+## Machine Learning Model
 
 ## Data Credit
 Description of Spotify song data is from the article <a href='https://towardsdatascience.com/is-my-spotify-music-boring-an-analysis-involving-music-data-and-machine-learning-47550ae931de'>'Is my Spotify music boring? An analysis involving music, data, and machine learning'</a> by Juan De Dios Santos (May 28, 2017).
