@@ -23,12 +23,14 @@ Extraneous, non-lyric words were removed using regEX and individual words were c
 
 All of the above information and the process to gather and clean it is contained in the `API-requests.ipynb` file.
 
-All of the dataframe information was exported to a JSON (`distinct_lyric_df.json`). This was then uploaded to MongoDB (`distinct_lyric_df_sql`) to help improve the data formatting.
+All of the dataframe information was exported to a JSON (`distinct_lyric_df.json`). This was then uploaded to MongoDB (`distinct_lyric_df_sql.json`) to help improve the data formatting.
 
-The machine learning model had difficulty due to the small sample size of each genre, so the 8 genres were combined into 4: rap/hip hop, pop/country, techno/electronica, and rock/metal.
+Initial trends were observed (visualizations in `Matplotlib_Visualizations.ipynb`). There was a positive correlation between energy and loudness, and a negative correlation between energy and acousticness in the songs sampled.
 
 ## Machine Learning Model
-Scikit-learn was used to build a multiclass classification model. The data was then split into training and testing sets. A random forest machine learning model was used to create the predictive model. 
+Scikit-learn was used to build a multiclass classification model. The data was then split into training and testing sets. A random forest classifier was used to create the predictive model. 
+
+The machine learning model had difficulty due to the small sample size of each genre, so the 8 genres were combined into 4: rap/hip hop, pop/country, techno/electronica, and rock/metal.
 
 The total accuracy of predicting which of the 4 genre groups a test song would be classified as was 77%.
 
