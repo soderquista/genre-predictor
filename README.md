@@ -28,7 +28,9 @@ All of the dataframe information was exported to a JSON (`distinct_lyric_df.json
 The machine learning model had difficulty due to the small sample size of each genre, so the 8 genres were combined into 4: rap/hip hop, pop/country, techno/electronica, and rock/metal.
 
 ## Machine Learning Model
-A random forest machine learning model was used to create the predictive model. The total accuracy of the 4 genre groups was 77%.
+Scikit-learn was used to build a multiclass classification model. The data was then split into training and testing sets. A random forest machine learning model was used to create the predictive model. 
+
+The total accuracy of predicting which of the 4 genre groups a test song would be classified as was 77%.
 
 ## Data Credit
 Description of Spotify song data is from the article <a href='https://towardsdatascience.com/is-my-spotify-music-boring-an-analysis-involving-music-data-and-machine-learning-47550ae931de'>'Is my Spotify music boring? An analysis involving music, data, and machine learning'</a> by Juan De Dios Santos (May 28, 2017).
